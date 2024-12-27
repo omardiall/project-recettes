@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="text-center my-4">
+        <h1 class="display-4">Recipe Details</h1>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Name: {{ recette.nom }}</h5>
+            <p class="card-text"><strong>Duration:</strong> {{ recette.dureeTotale }} minutes</p>
+            <p class="card-text"><strong>Ingredients:</strong></p>
+            <ul>
+                {% for ingredient in recette.ingredients %}
+                    <li>{{ ingredient.nom }}</li>
+                {% endfor %}
+            </ul>
+            <p class="card-text"><strong>Description:</strong></p>
+            <p>{{ recette.texte }}</p>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+            <a href="{{ path('recette_index') }}" class="btn btn-secondary">Back to list</a>
+            <a href="{{ path('recette_edit', {'id': recette.id}) }}" class="btn btn-warning">Edit</a>
+        </div>
+    </div>
+{% endblock %}

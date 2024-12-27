@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Comment Details</h1>
+    <p>{{ commentaire.texte }}</p>
+    <p>{{ commentaire.date|date('Y-m-d H:i') }}</p>
+    <a href="{{ path('commentaire_index') }}">Back to list</a>
+{% endblock %}

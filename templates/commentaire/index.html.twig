@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Commentaires</h1>
+    <a href="{{ path('commentaire_new') }}">Add New Comment</a>
+
+    <ul>
+        {% for commentaire in commentaires %}
+            <li>
+                {{ commentaire.texte }} - {{ commentaire.date|date('Y-m-d H:i') }}
+                <a href="{{ path('commentaire_show', {'id': commentaire.id}) }}">Show</a>
+                <a href="{{ path('commentaire_edit', {'id': commentaire.id}) }}">Edit</a>
+                <form method="post" action="{{ path('commentaire_delete', {'id': commentaire.id}) }}" style="display:inline;">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ commentaire.id) }}">
+                    <button class="btn btn-danger">Delete</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

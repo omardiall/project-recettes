@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="text-center my-4">
+        <h1 class="display-4">Edit Recipe</h1>
+    </div>
+
+    <div class="card p-4">
+        {{ form_start(form) }}
+            {{ form_widget(form, {'attr': {'class': 'form-control'}}) }}
+            <button type="submit" class="btn btn-success mt-3">Save Changes</button>
+        {{ form_end(form) }}
+    </div>
+
+    <a href="{{ path('recette_index') }}" class="btn btn-secondary mt-3">Back to list</a>
+{% endblock %}
